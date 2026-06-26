@@ -6,7 +6,6 @@
   <title>Tip Hannah 💋</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: #FFD6E8;
@@ -16,7 +15,6 @@
       justify-content: center;
       padding: 2rem 1rem;
     }
-
     .card {
       background: #FFF0F6;
       border-radius: 28px;
@@ -26,26 +24,9 @@
       text-align: center;
       box-shadow: 0 8px 32px rgba(212, 83, 126, 0.18);
     }
-
-    .kiss {
-      font-size: 72px;
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-
-    h1 {
-      font-size: 28px;
-      font-weight: 700;
-      color: #A8005A;
-      margin-bottom: 0.25rem;
-    }
-
-    .subtitle {
-      font-size: 14px;
-      color: #D4537E;
-      margin-bottom: 1.75rem;
-    }
-
+    .kiss { font-size: 72px; line-height: 1; margin-bottom: 0.5rem; }
+    h1 { font-size: 28px; font-weight: 700; color: #A8005A; margin-bottom: 0.25rem; }
+    .subtitle { font-size: 14px; color: #D4537E; margin-bottom: 1.75rem; }
     .amount-row {
       display: flex;
       align-items: center;
@@ -55,7 +36,102 @@
       margin-bottom: 1rem;
       background: #FFE4F0;
     }
-
-    .amount-row span {
-      font-size: 26px;
-      color: #C2006C;
+    .amount-row span { font-size: 26px; color: #C2006C; font-weight: 600; padding-right: 6px; }
+    .amount-row input {
+      flex: 1; font-size: 26px; border: none;
+      background: transparent; padding: 0.75rem 0;
+      color: #A8005A; outline: none; width: 100%;
+    }
+    .amount-row input::placeholder { color: #F48FB1; }
+    .presets {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 1.25rem;
+    }
+    .preset {
+      padding: 10px 0; border-radius: 10px; border: none;
+      font-size: 15px; font-weight: 600; cursor: pointer;
+      color: #fff; background: #C2006C; transition: opacity 0.15s;
+    }
+    .preset:hover { opacity: 0.85; }
+    .preset.active { outline: 3px solid #7A003E; }
+    .submit-btn {
+      width: 100%; padding: 16px; border-radius: 14px; border: none;
+      background: #FFB6D9; color: #7A003E; font-size: 18px; font-weight: 700;
+      cursor: pointer; letter-spacing: 0.02em;
+      box-shadow: 0 4px 16px rgba(255, 182, 217, 0.35);
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+    .submit-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(255, 182, 217, 0.45); }
+    .instructions {
+      margin-top: 1.5rem; background: #FFB6D9;
+      border: 2px solid #FF80B0; border-radius: 16px;
+      padding: 1.25rem; text-align: left; display: none;
+    }
+    .instructions h2 { font-size: 15px; font-weight: 700; color: #A8005A; margin-bottom: 0.75rem; }
+    .instructions ol { padding-left: 1.25rem; color: #7A003E; font-size: 14px; line-height: 2; }
+    .instructions ol strong { color: #A8005A; }
+    .square-btn {
+      display: block; width: 100%; padding: 14px; border-radius: 12px;
+      border: none; background: #C2006C; color: #fff; font-size: 16px;
+      font-weight: 700; cursor: pointer; text-decoration: none;
+      margin-top: 1rem; box-shadow: 0 4px 16px rgba(194, 0, 108, 0.3);
+      transition: transform 0.1s; text-align: center;
+    }
+    .square-btn:hover { transform: translateY(-1px); }
+    .thankyou { margin-top: 0.75rem; font-size: 13px; color: #A8005A; text-align: center; }
+    .auto-note { margin-top: 1.5rem; font-size: 12px; color: #F48FB1; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="kiss">💋</div>
+    <h1>Tip Hannah</h1>
+    <p class="subtitle">Choose an amount and pay by credit or debit card</p>
+    <div class="amount-row">
+      <span>$</span>
+      <input id="amount" type="number" min="1" placeholder="Enter amount" />
+    </div>
+    <div class="presets">
+      <button class="preset" onclick="setAmt(5)">$5</button>
+      <button class="preset" onclick="setAmt(10)">$10</button>
+      <button class="preset" onclick="setAmt(20)">$20</button>
+      <button class="preset" onclick="setAmt(50)">$50</button>
+    </div>
+    <button class="submit-btn" onclick="sendTip()">Send tip 💋</button>
+    <div class="instructions" id="instructions">
+      <h2>You're sending <span id="amount-display">$0.00</span> to Hannah!</h2>
+      <ol>
+        <li>Tap the button below to pay securely</li>
+        <li>Enter your <strong>credit or debit card</strong></li>
+        <li>No account needed — just tap and go!</li>
+      </ol>
+      <a id="square-link" href="PASTE_HANNAH_SQUARE_LINK_HERE" target="_blank" class="square-btn">
+        Pay with Card →
+      </a>
+      <p class="thankyou">Thank you so much — it means the world! 🌸</p>
+    </div>
+    <p class="auto-note">Powered by Square · Secure card payment · Tips go directly to Hannah</p>
+  </div>
+  <script>
+    function setAmt(n) {
+      document.getElementById('amount').value = n;
+      document.querySelectorAll('.preset').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+    document.getElementById('amount').addEventListener('input', function() {
+      document.querySelectorAll('.preset').forEach(b => b.classList.remove('active'));
+    });
+    function sendTip() {
+      var amt = parseFloat(document.getElementById('amount').value);
+      if (!amt || amt <= 0) { alert('Please enter a tip amount first!'); return; }
+      var display = '$' + amt.toFixed(2);
+      document.getElementById('amount-display').textContent = display;
+      var el = document.getElementById('instructions');
+      el.style.display = 'block';
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
+</body>
+</html>
