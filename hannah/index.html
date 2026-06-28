@@ -28,13 +28,9 @@
     h1 { font-size: 28px; font-weight: 700; color: #A8005A; margin-bottom: 0.25rem; }
     .subtitle { font-size: 14px; color: #D4537E; margin-bottom: 1.75rem; }
     .amount-row {
-      display: flex;
-      align-items: center;
-      border: 2px solid #F48FB1;
-      border-radius: 14px;
-      padding: 0 1rem;
-      margin-bottom: 1rem;
-      background: #FFE4F0;
+      display: flex; align-items: center;
+      border: 2px solid #F48FB1; border-radius: 14px;
+      padding: 0 1rem; margin-bottom: 1rem; background: #FFE4F0;
     }
     .amount-row span { font-size: 26px; color: #C2006C; font-weight: 600; padding-right: 6px; }
     .amount-row input {
@@ -44,10 +40,8 @@
     }
     .amount-row input::placeholder { color: #F48FB1; }
     .presets {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin-bottom: 1.25rem;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 8px; margin-bottom: 1.25rem;
     }
     .preset {
       padding: 10px 0; border-radius: 10px; border: none;
@@ -107,7 +101,7 @@
         <li>Enter your <strong>credit or debit card</strong></li>
         <li>No account needed — just tap and go!</li>
       </ol>
-      <a id="square-link" href="PASTE_HANNAH_SQUARE_LINK_HERE" target="_blank" class="square-btn">
+      <a href="https://square.link/u/KEow3VVd" target="_blank" class="square-btn">
         Pay with Card →
       </a>
       <p class="thankyou">Thank you so much — it means the world! 🌸</p>
@@ -126,8 +120,7 @@
     function sendTip() {
       var amt = parseFloat(document.getElementById('amount').value);
       if (!amt || amt <= 0) { alert('Please enter a tip amount first!'); return; }
-      var display = '$' + amt.toFixed(2);
-      document.getElementById('amount-display').textContent = display;
+      document.getElementById('amount-display').textContent = '$' + amt.toFixed(2);
       var el = document.getElementById('instructions');
       el.style.display = 'block';
       el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
